@@ -3,4 +3,5 @@
     <string name="key_add">Add</string>
     <string name="key_remove">remove</string>
     <string name="key_back">Back</string>
+    <string name="key_setting">Setting</string>
 </resources>
