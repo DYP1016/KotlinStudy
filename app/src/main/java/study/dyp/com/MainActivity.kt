@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,7 +34,9 @@ class MainActivity : AppCompatActivity() {
             "网络请求测试2",
             "网络请求测试3",
             "网络请求测试4",
-            "网络请求测试5"
+            "网络请求测试5",
+            "水果列表",
+            "卡片"
         )
 
         lv_list.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, item)
@@ -70,6 +73,17 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 "网络请求测试5" -> {
+                    AlertDialog.Builder(this@MainActivity)
+                        .setTitle("Test")
+                        .setMessage("123")
+                        .setPositiveButton("ok") { dialog, which ->
+
+                        }
+                        .setNegativeButton("cancel") { dialog, which ->
+
+                        }
+                        .show()
+
                     scope.launch {
                         try {
                             val ret = testHttpRequest("https://www.baidu.com")
@@ -78,6 +92,12 @@ class MainActivity : AppCompatActivity() {
                             e.printStackTrace()
                         }
                     }
+                }
+                "水果列表" -> {
+                    startTargetActivity<FruitActivity>(this)
+                }
+                "卡片" -> {
+                    startTargetActivity<CardActivity>(this)
                 }
             }
         }
