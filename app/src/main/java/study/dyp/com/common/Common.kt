@@ -48,6 +48,10 @@ data class QvResult<T>(var code: Int, var result: T?) {
     fun retSuccess() = code == RET_SUCCESS
 }
 
+typealias loadListener<T> = QvResult<T>.() -> Unit
+
+typealias simpleLoadListener = Int.() -> Unit
+
 interface LoadListener<T> {
     fun onResult(result: QvResult<T>)
 }

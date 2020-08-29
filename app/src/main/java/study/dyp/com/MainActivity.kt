@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okhttp3.*
 import study.dyp.com.common.*
+import study.dyp.com.viewmodel.ViewModelActivity
 import java.io.IOException
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         val item = arrayOf(
             "跳转到SecondActivity",
+            "View model测试",
             "网络请求测试1",
             "网络请求测试2",
             "网络请求测试3",
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         lv_list.setOnItemClickListener { _, _, position, _ ->
             when (item[position]) {
                 "跳转到SecondActivity" -> startTargetActivity<SecondActivity>(this@MainActivity)
+                "View model测试" -> startTargetActivity<ViewModelActivity>(this@MainActivity)
                 "网络请求测试1" -> {
                     sendHttpRequest("https://www.baidu.com", object : LoadListener<String> {
                         override fun onResult(result: QvResult<String>) {
@@ -120,6 +123,10 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    fun sendHttpRequest2(address: String, loadListener: loadListener<String>) {
+        sendHttpRequest(address, loadListener)
+    }
+
     fun sendHttpRequest(address: String, loadListener: QvResult<String>.() -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -152,6 +159,14 @@ class MainActivity : AppCompatActivity() {
                 loadListener.onResult(RET_SUCCESS)
             }
         })
+    }
+
+    fun testHttpRequest2(address: String, loadListener: simpleLoadListener) {
+        testHttpRequest(address, loadListener)
+    }
+
+    fun testHttpRequest3(address: String, loadListener: (ret: Int) -> Unit) {
+        testHttpRequest(address, loadListener)
     }
 
     fun testHttpRequest(address: String, loadListener: Int.() -> Unit) {
