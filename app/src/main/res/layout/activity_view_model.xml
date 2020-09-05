@@ -29,6 +29,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/key_clear"
+        app:layout_constraintBottom_toTopOf="@id/bt_get_user" />
+
+    <Button
+        android:id="@+id/bt_get_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/key_get_user"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ object SpUtil : BaseSpUtil() {
         return "save"
     }
 
-    fun setCurrentCount(count: Int) = setIntValue(KEY_COUNT, count)
+    fun setCurrentCount(count: Int?) = setIntValue(KEY_COUNT, count)
 
     fun getCurrentCount() = getIntValue(KEY_COUNT, 0)
 }
